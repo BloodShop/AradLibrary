@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="Library.UI.LogInPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Library.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/Images/5ac1296b709f4427d4c7785a322d78a2.png"/>
+    </Page.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel x:Name="LogInSP" Grid.Row="0" Grid.Column="4" Grid.RowSpan="2" Visibility="Collapsed">
+            <TextBox x:Name="UserNameTB" Margin="30" TextAlignment="Center" Header="UserName"
+                     FontSize="25" FontFamily="Book Antiqua" MinWidth="200"/>
+            <PasswordBox x:Name="PasswordBox" Password="admin" Header="Password" HorizontalAlignment="Center"
+                     Margin="30" FontSize="25" HorizontalContentAlignment="Center" MinWidth="200" FontFamily="Book Antiqua"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center"
+                   FontSize="60" FontFamily="Algerian" Text="Continue as..." Grid.ColumnSpan="3" Height="79"/>
+        <Button x:Name="CustomerBtn" Grid.Row="2" Grid.Column="2"
+                   FontSize="60" FontFamily="Book Antiqua"
+                   Content="Customer" Click="CustomerTB_Click" FontStyle="Italic"/>
+        <Button x:Name="GuestBtn" Grid.Row="2" Grid.Column="1"
+                   FontSize="60" FontFamily="Book Antiqua"
+                   Content="Guest" Click="GuestTB_Click" FontStyle="Italic" HorizontalAlignment="Center"/>
+        <Button x:Name="AdminBtn" Grid.Row="2" Grid.Column="3"
+                   FontSize="60" FontFamily="Book Antiqua"
+                   Content="Admin" Click="AdminTB_Click" FontStyle="Italic" HorizontalAlignment="Center"/>
+
+        <Button  x:Name="ContinueBtn" Grid.Row="3" Grid.Column="4" 
+                 HorizontalAlignment="Center" Content="Continue" 
+                 FontSize="40" FontFamily="Algerian"
+                 Click="ContinueBtn_Click"/>
+
+        <NavigationView x:Name="PaneNV" PaneDisplayMode="LeftMinimal" Grid.Column="0" Grid.RowSpan="4" IsPaneOpen="False" IsBackEnabled="True" BackRequested="Return_BackRequested">
+            <NavigationView.Header>
+                <Image Source="Assets\Images\UntitledPin.png" Width="50" Height="50" HorizontalAlignment="Left"/>
+            </NavigationView.Header>
+            <NavigationView.PaneHeader>
+                <Image Source="Assets\Images\UntitledPin.png" HorizontalAlignment="Left"/>
+            </NavigationView.PaneHeader>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Account" Content="Registration" Tapped="Registrate_Click"/>
+                <NavigationViewItem Icon="LeaveChat" Content="Exit" Tapped="Exit_Click"/>
+                <NavigationViewItem/>
+            </NavigationView.MenuItems>
+        </NavigationView>
+    </Grid>
+</Page>

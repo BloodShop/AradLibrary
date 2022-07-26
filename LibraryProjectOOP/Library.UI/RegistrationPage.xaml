@@ -1,0 +1,94 @@
+﻿<Page
+    x:Class="Library.UI.RegistrationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Library.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/Images/5ac1296b709f4427d4c7785a322d78a2.png"/>
+    </Page.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Column="1" VerticalAlignment="Center" TextAlignment="Center"
+                   FontSize="60" FontFamily="Algerian" Text="Registration" Height="79" Grid.ColumnSpan="3"/>
+
+        <TextBlock x:Name="NameTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Name: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+        <TextBox x:Name="NameTB1" Grid.Row="1" Grid.Column="1" Margin="0,30,0,0" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MaxWidth="250" MinWidth="100"/>
+
+        
+        <TextBlock x:Name="PasswordTB" Grid.Row="1" Grid.Column="3" Text="Password: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+        <PasswordBox x:Name="PasswordTB1" Grid.Row="1" Grid.Column="3" Margin="0,30,0,0" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" MaxWidth="250" MinWidth="100"/>
+
+        <Button x:Name="SubmitBtn" Grid.Row="3" Grid.Column="2"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="40" FontFamily="Algerian"
+                   Content="Submit" Click="SubmitBtn_Click"  />
+
+
+        <TextBlock x:Name="CityTB" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="1" Text="City: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+        <TextBox x:Name="CityTB1" Grid.Row="2" Grid.Column="0" Margin="0,30,0,0" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MaxWidth="250" MinWidth="150"/>
+
+        <TextBlock x:Name="StreetTB" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" Text="Street: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+        <TextBox x:Name="StreetTB1" Grid.Row="2" Grid.Column="1" Margin="0,30,0,0" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MaxWidth="250" MinWidth="200"/>
+
+        <TextBlock x:Name="HouseNumberTB" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="1" Text="House Number: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+        <TextBox x:Name="HouseNumberTB1" Grid.Row="2" Grid.Column="2" Margin="0,30,0,0" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MaxWidth="150" MinWidth="100"/>
+
+        <TextBlock x:Name="HouseEntryTB" Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="1" Text="House Entry: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+        <TextBox x:Name="HouseEntryTB1" Grid.Row="2" Grid.Column="3" Margin="0,30,0,0" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MaxWidth="150" MinWidth="80"/>
+
+        <TextBlock x:Name="PostalCodeTB" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="1" Text="Postal Code: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+        <TextBox x:Name="PostalCodeTB1" Grid.Row="2" Grid.Column="4" Margin="0,30,0,0" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MaxWidth="150" MinWidth="150"/>
+
+        <NavigationView x:Name="PaneNV" PaneDisplayMode="LeftMinimal" Grid.Column="0" Grid.RowSpan="100" IsPaneOpen="False"
+                        IsBackEnabled="True" BackRequested="NavigationView_BackRequested">
+            <NavigationView.Header>
+                <Image Source="Assets\Images\UntitledPin.png" Width="50" Height="50" HorizontalAlignment="Left"/>
+            </NavigationView.Header>
+            <NavigationView.PaneHeader>
+                <Image Source="Assets\Images\UntitledPin.png" HorizontalAlignment="Left"/>
+            </NavigationView.PaneHeader>
+            
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="LeaveChat" Content="Exit" Tapped="Exit_Click"/>
+            </NavigationView.MenuItems>
+        </NavigationView>
+
+    </Grid>
+</Page>

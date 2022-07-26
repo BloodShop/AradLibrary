@@ -1,0 +1,85 @@
+﻿<Page
+    x:Class="Library.UI.AdminPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Library.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/Images/5ac1296b709f4427d4c7785a322d78a2.png"/>
+    </Page.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="1"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center"
+                   FontSize="60" FontFamily="Algerian" Text="Administrator"/>
+
+        <Button x:Name="AddItemBtn" Grid.Row="1" Grid.Column="1"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="40" FontFamily="Algerian" Margin="0,0,360,0"
+                   Content="Add Item" Click="AddItemBtn_Click"/>
+
+        <Button x:Name="FindItemBtn" Grid.Row="1" Grid.Column="1"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="40" FontFamily="Algerian" Margin="360,0,0,0"
+                   Content="Find Item" Click="FindItemBtn_Click"/>
+
+        <Button x:Name="ViewLoanedItemsBtn" Grid.Row="2" Grid.Column="1"
+                   HorizontalAlignment="Center" VerticalAlignment="Top"
+                   FontSize="40" FontFamily="Algerian"
+                   Content="View Loaned Items" Click="ViewLoanedItemsBtn_Click"/>
+
+        <HyperlinkButton x:Name="ExploreBtn" Grid.Row="2" Grid.Column="1"
+                   HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                   FontSize="40" FontFamily="Algerian"
+                   Content="Explore" NavigateUri="https://www.nli.org.il/he" Foreground="Black"/>
+
+        <Button x:Name="SetSaleBtn" Grid.Row="3" Grid.Column="1" Margin="0,0,50,0"
+                   HorizontalAlignment="Right" VerticalAlignment="Center"
+                   FontSize="40" FontFamily="Algerian"
+                   Content="Set Sale" Click="SetSaleBtn_Click"/>
+
+        <Button x:Name="EndSaleBtn" Grid.Row="3" Grid.Column="1" Margin="50,0,0,0"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                   FontSize="40" FontFamily="Algerian"
+                   Content="End Sale" Click="EndSaleBtn_Click"/>
+
+        <NavigationView x:Name="PaneNV" PaneDisplayMode="LeftMinimal" Grid.Column="0" IsPaneOpen="False" IsBackEnabled="True"
+                        BackRequested="NavigationView_BackRequested" Header="">
+            <NavigationView.PaneHeader>
+                <Image Source="Assets\Images\UntitledPin.png" HorizontalAlignment="Left"/>
+            </NavigationView.PaneHeader>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Admin" Content="Change Password" Tapped="ChangePassword_Click"/>
+                <NavigationViewItem/>
+            </NavigationView.MenuItems>
+        </NavigationView>
+
+        <StackPanel x:Name="ChangePasswordSP" Orientation="Vertical" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" HorizontalAlignment="Center"
+                    Visibility="Collapsed" VerticalAlignment="Center" BorderBrush="#FF40301A" BorderThickness="2">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF993D9E"/>
+                    <GradientStop Color="#FFAB61EC" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <PasswordBox x:Name="OldPasswordPS" PlaceholderText="Old Password" Margin="20" MinWidth="150" />
+            <PasswordBox x:Name="NewPasswordPS" PlaceholderText="New Password" Margin="20" MaxWidth="150" />
+            <Button x:Name="SubmitNewPasswordBtn" Click="SubmitNewPasswordBtn_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                    Margin="10" Content="Submit" />
+        </StackPanel>
+
+    </Grid>
+</Page>

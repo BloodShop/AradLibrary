@@ -1,0 +1,93 @@
+﻿<Page
+    x:Class="Library.UI.ShowMoreDetailsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Library.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/Images/5ac1296b709f4427d4c7785a322d78a2.png"/>
+    </Page.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Image x:Name="ItemImage"  Width="170" Height="180" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Right"/>
+
+        <TextBlock Grid.Row="0" Grid.Column="1"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center"
+                   TextWrapping="WrapWholeWords"
+                   FontSize="60" FontFamily="Algerian" Text="MORE DETAILS"/>
+
+        <StackPanel x:Name="BookDetailsSP" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Visibility="Collapsed">
+
+            <TextBlock x:Name="AuthorsTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Authors: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" TextWrapping="WrapWholeWords"
+                   FontSize="20" FontFamily="Algerian"/>
+
+            <TextBlock x:Name="PublisherTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Publisher: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" TextWrapping="WrapWholeWords"
+                   FontSize="20" FontFamily="Algerian" Margin="0,60,0,0"/>
+
+            <TextBlock x:Name="GenresTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Genres: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" TextWrapping="WrapWholeWords"
+                   FontSize="20" FontFamily="Algerian" Margin="0,60,0,0"/>
+
+            <TextBlock x:Name="RevisionTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Revision: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" TextWrapping="WrapWholeWords"
+                   FontSize="20" FontFamily="Algerian" Margin="0,60,0,0"/>
+
+            <TextBlock x:Name="ISBNTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="ISBN: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" TextWrapping="WrapWholeWords"
+                   FontSize="20" FontFamily="Algerian" Margin="0,5,0,0"/>
+
+            <TextBlock x:Name="SynopsisTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Synopsis: "
+                        TextWrapping="WrapWholeWords"
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" Margin="0,60,0,0"/>
+        </StackPanel>
+
+        <StackPanel x:Name="JournalDetailsSP" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Visibility="Collapsed">
+            <TextBlock x:Name="ContributorsTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Contributors: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" TextWrapping="WrapWholeWords"
+                   FontSize="20" FontFamily="Algerian"/>
+
+            <TextBlock x:Name="EditorsTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Editors: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" TextWrapping="WrapWholeWords"
+                   FontSize="20" FontFamily="Algerian" Margin="0,60,0,0"/>
+
+            <TextBlock x:Name="JournalGenresTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Genres: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" TextWrapping="WrapWholeWords"
+                   FontSize="20" FontFamily="Algerian" Margin="0,60,0,0"/>
+
+            <TextBlock x:Name="FrequencyTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Frequency: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" TextWrapping="WrapWholeWords"
+                   FontSize="20" FontFamily="Algerian" Margin="0,60,0,0"/>
+        </StackPanel>
+
+        <Button x:Name="ReviewsBtn" Grid.Row="0" Grid.Column="2" 
+                          Content="SHOW REVIEWS" FontSize="20" FontFamily="Algerian" Click="ShowReviews_Click" 
+                           HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0"/>
+
+        <NavigationView x:Name="PaneNV" PaneDisplayMode="LeftMinimal" Grid.Column="0" Grid.RowSpan="100" IsPaneOpen="False"
+                        IsBackEnabled="True" BackRequested="NavigationView_BackRequested" Header="">
+            <NavigationView.PaneHeader>
+                <Image Source="Assets\Images\UntitledPin.png" HorizontalAlignment="Left"/>
+            </NavigationView.PaneHeader>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="LeaveChat" Content="Exit" Tapped="Exit_Click"/>
+            </NavigationView.MenuItems>
+        </NavigationView>
+    </Grid>
+</Page>

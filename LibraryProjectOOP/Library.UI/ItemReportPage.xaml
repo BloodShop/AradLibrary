@@ -1,0 +1,69 @@
+﻿<Page
+    x:Class="Library.UI.ItemReportPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Library.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/Images/5ac1296b709f4427d4c7785a322d78a2.png"/>
+    </Page.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.Column="1"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center"
+                   FontSize="60" FontFamily="Algerian" Text="Item's Report" />
+
+
+        <StackPanel x:Name="BookSP" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3">
+            <TextBlock x:Name="TitleTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Title: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+
+            <TextBlock x:Name="PublishDateTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Date Publish: "
+                   HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" Margin="40"/>
+
+            <TextBlock x:Name="PriceTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Price: "
+                   HorizontalAlignment="Center" VerticalAlignment="Bottom" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" Margin="40"/>
+
+            <TextBlock x:Name="GuidTB" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="1" Text="Guid: "
+                   HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+            <CheckBox x:Name="GuidCheckBox" FontFamily="Algerian" Content="Show Item's Guid" Grid.Column="1"
+                  Grid.Row="2" Margin="0,0,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Width="149" Unchecked="GuidCheckBox_Unchecked" Checked="GuidCheckBox_Checked"/>
+        </StackPanel>
+
+        <Button x:Name="PurchaseBtn" Grid.Row="3" Grid.Column="1"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="40" FontFamily="Algerian"
+                   Content="Purchase" Click="PurchaseBtn_Click"/>
+
+        <HyperlinkButton x:Name="ShowMoreDetailsBtn" Grid.Row="2" Grid.Column="1"
+                   HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                   FontSize="25" FontFamily="Algerian"
+                   Content="Show More Details" Click="ShowMoreDetailsBtn_Click" Foreground="#FF4D009E"/>
+
+        <NavigationView x:Name="PaneNV" PaneDisplayMode="LeftMinimal" Grid.Column="0" Grid.RowSpan="100" IsPaneOpen="False" IsBackEnabled="True" BackRequested="NavigationView_BackRequested">
+            <NavigationView.PaneHeader>
+                <Image Source="Assets\Images\UntitledPin.png" HorizontalAlignment="Left"/>
+            </NavigationView.PaneHeader>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="LeaveChat" Content="Exit" Tapped="Exit_Click"/>
+            </NavigationView.MenuItems>
+        </NavigationView>
+    </Grid>
+</Page>

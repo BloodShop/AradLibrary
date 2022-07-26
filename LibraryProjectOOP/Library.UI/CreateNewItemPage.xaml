@@ -1,0 +1,162 @@
+﻿<Page
+    x:Class="Library.UI.CreateNewItemPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Library.UI"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush ImageSource="/Assets/Images/5ac1296b709f4427d4c7785a322d78a2.png"/>
+    </Page.Background>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="1"
+                   HorizontalAlignment="Stretch" VerticalAlignment="Center" TextAlignment="Center"
+                   FontSize="60" FontFamily="Algerian" Text="Create new item"/>
+
+        <TextBlock x:Name="TitleTB" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Text="Title: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+        <TextBox x:Name="TitleTB1" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Margin="0,30,0,0" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MinWidth="300"/>
+
+        <TextBlock x:Name="NumOfPagesTB" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Text="Pages: "
+                   HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+        <TextBox x:Name="NumOfPagesTB1" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Margin="0,65,0,0" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" MinWidth="300"/>
+
+
+        <TextBlock x:Name="PriceTB" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Text="Price: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+        <TextBox x:Name="PriceTB1" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Margin="0,30,0,0" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MinWidth="300"/>
+
+        <TextBlock x:Name="SaleTB" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Text="Sale: "
+                   HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" />
+        <TextBox x:Name="SaleTB1" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Margin="0,65,0,0"
+                     HorizontalAlignment="Center" VerticalAlignment="Center" PlaceholderText="Optional* default 0%"
+                     TextAlignment="Center" MinWidth="300" FontFamily="Book Antiqua"/>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="0,0,0,30">
+            <DatePicker x:Name="PublicationDate" Header="Publish Date" FontFamily="Algerian" 
+                        DayFormat="{}{day.integer} ({dayofweek.abbreviated})"
+                        SelectedDateChanged="PublicationDatePicker_SelectedDateChanged"/>
+            <Button Content="Clear" Click="ClearDateButton_Click" Background="#66DA0C0C" FontFamily="Algerian"/>
+        </StackPanel>
+
+        <StackPanel x:Name="BookSP" Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Visibility="Collapsed">
+            <TextBlock x:Name="AuthorsTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Authors: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="18" FontFamily="Algerian" Margin="0,0,0,0"/>
+            <TextBox x:Name="AuthorsTB1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1"  FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MinWidth="300"/>
+
+            <TextBlock x:Name="PublisherTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Publisher: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="18" FontFamily="Algerian" Margin="0,0,0,0"/>
+            <TextBox x:Name="PublisherTB1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MinWidth="300"/>
+
+            <TextBlock x:Name="BookGenresTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Genres: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="18" FontFamily="Algerian" Margin="0,0,0,0"/>
+            <ComboBox x:Name="BookGenresCB" Grid.Row="1" Grid.Column="1" Margin="0,0,0,0"  FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" MinWidth="300" PlaceholderText="Pick Genre"/>
+
+            <TextBlock x:Name="RevisionTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Revision: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="18" FontFamily="Algerian" Margin="0,0,0,0"/>
+            <TextBox x:Name="RevisionTB1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1"   FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MinWidth="300"/>
+
+            <TextBlock x:Name="CountryTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Country: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="18" FontFamily="Algerian" Margin="0,0,0,0"/>
+            <ComboBox x:Name="CountryCB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Country: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" MinWidth="300"/>
+            
+            <TextBlock x:Name="SerialNumberTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Serial Number: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="18" FontFamily="Algerian" Margin="0,0,0,0"/>
+            <TextBox x:Name="SerialNumberTB1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MinWidth="300"/>
+
+            <TextBlock x:Name="SynopsisTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Synopsis: "
+                        TextWrapping="WrapWholeWords"
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="18" FontFamily="Algerian" Margin="0,0,0,0"/>
+            <TextBox x:Name="SynopsisTB1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" FontFamily="Book Antiqua"
+                     TextWrapping="Wrap" Margin="100,0,100,0"/>
+        </StackPanel>
+
+        <StackPanel x:Name="JournalSP" Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Visibility="Collapsed">
+
+            <TextBlock x:Name="ContributorsTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Contributors: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" Margin="0,0,0,0"/>
+            <TextBox x:Name="ContributorsTB1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MinWidth="300"/>
+
+            <TextBlock x:Name="EditorsTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Editors: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" Margin="0,0,0,0"/>
+            <TextBox x:Name="EditorsTB1" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" MinWidth="300"/>
+
+            <TextBlock x:Name="JournalGenresTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Genres: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" Margin="0,0,0,0"/>
+            <ComboBox x:Name="JournalGenresCB" Grid.Row="1" Grid.Column="1" Margin="0,0,0,0" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" MinWidth="300" PlaceholderText="Pick Genre"/>
+
+            <TextBlock x:Name="FrequencyTB" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Frequency: "
+                   HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+                   FontSize="20" FontFamily="Algerian" Margin="0,0,0,0"/>
+            <ComboBox x:Name="FrequencyCB" Grid.Row="1" Grid.Column="1" Margin="0,0,0,0" FontFamily="Book Antiqua"
+                     HorizontalAlignment="Center" VerticalAlignment="Top" MinWidth="300" PlaceholderText="Pick Journal's Frequency"/>
+
+        </StackPanel>
+
+        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="ItemType"
+            HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center"
+            FontSize="20" FontFamily="Algerian" Text="Item type:"/>
+        <ComboBox x:Name="ItemTypeCB" Grid.Row="1" Grid.Column="1" Width="300" HorizontalAlignment="Center" Margin="0,-90,0,0" 
+            FontSize="20" FontFamily="Book Antiqua" Text="select Sort" Background="#66DA0C0C" VerticalAlignment="Center"
+                  PlaceholderText="Pick a type"/>
+
+        <Button x:Name="AddItemBtn" Grid.Row="0" Grid.Column="2"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="40" FontFamily="Algerian"
+                   Content="Add Item" Click="AddItemBtn_Click"/>
+        <Button x:Name="EditItemBtn" Grid.Row="0" Grid.Column="2"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="40" FontFamily="Algerian" Visibility="Collapsed"
+                   Content="Update Item" Click="EditItemBtn_Click"/>
+        
+        <NavigationView x:Name="PaneNV" PaneDisplayMode="LeftMinimal" Grid.Column="0" Grid.RowSpan="100" IsPaneOpen="False" IsBackEnabled="True" BackRequested="NavigationView_BackRequested">
+            <NavigationView.PaneHeader>
+                <Image Source="Assets\Images\UntitledPin.png" HorizontalAlignment="Left"/>
+            </NavigationView.PaneHeader>
+            <NavigationView.MenuItems>
+                <NavigationViewItem Icon="LeaveChat" Content="Exit" Tapped="Exit_Click"/>
+            </NavigationView.MenuItems>
+        </NavigationView>
+
+    </Grid>
+</Page>
