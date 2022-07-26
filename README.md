@@ -10,6 +10,8 @@ Our application is a simple way to view what kind of Library Items we have in ou
 
 -	Arad City Library made for windows Application users
 
+![WelcomeApp](https://user-images.githubusercontent.com/23366804/180944263-9057c0fe-8beb-40ae-b6ce-c59f022acf44.png)
+
 Architecture and technological requirements
 1. Infrastructures
 	a. DataBase Architecture
@@ -25,6 +27,8 @@ Architecture and technological requirements
 	a. Person.Model
 	b. Library.Model
 	c. Library.DAL
+	
+![LogInPage2](https://user-images.githubusercontent.com/23366804/180944348-12e83dba-80ca-4e35-82fb-08338b029003.png)
 
 # Use cases and functionality
 User View Application:
@@ -38,7 +42,9 @@ At the logIn page the user can create a new username with his unique data, and i
 Required Fields: Name, password, City, Street and House number.
 Optional: House Entry, Postal code.
 At the final stage the user is able to purchase / borrow any kind of item he will select. The final step shows the user his Address that the item is being sent to and a message the day he has to retrieve the item (if he borrowed the item) as a guest the last stage requires him to fill the address he want the shipping to arrive and can not borrow an item only purchase, In contrast to the  customer which can also purchase and borrow any item.
- 
+
+ ![SearchItemPage3](https://user-images.githubusercontent.com/23366804/180944393-ff4b2eae-4f91-4fcf-ad34-dd83eeeffde6.png)
+
 As any user the is an Navigation Panel which can be accessed at any page to navigate to certain pages or changes like: 
 1.	Returning to the MainPage
 2.	Changing Password
@@ -49,30 +55,37 @@ As any user the is an Navigation Panel which can be accessed at any page to navi
 The management panel will be used by both the management members and the users of the application and therefore it will contain within it
 A permission-managed information mechanism, that is, information that is displayed or can be edited only by those with suitable permission.
 The management panel will be based on the template attached at the beginning of this document (on the architecture page).
+
 # Permissions –
-A.	Manager -  There is access to all the information in the system:
+A.	Manager - There is access to all the information in the system:
+
     1.	Adding new items to stock.
     2.	Delete / Update any item.
     3.	Set / End Sale on all items.
     4.	Return any item to stock that was loaned.
     5.	Search / Delete users
-B.	Employee – 
+    
+B.	Employee:
     1.	Get certain information for the delivery.
     2.	Adding new items to stock.
     3.	Return any item to stock that was loaned.
-C.	Customer –
+    
+C.	Customer:
     1.	Search any Item and purchase / borrow
     2.	React / Review to any item
     3.	Change password
-D.	Guest – 
+D.	Guest:
     1.Search any Item and purchase only
     2. React / Review to any item
     3. Doesn’t have sale on any item
     
+![ItemMoreInformationPage6](https://user-images.githubusercontent.com/23366804/180944583-ca8f8a0b-cb64-4066-9fe3-fe43bc852e8c.png)
+
 # The workers panel pages
 The administrator ‘main page’ more likely to be administration page is easy to used and to set new things. 
 This section is shown to site Managers and Employees only.
 This section allows administrators to do the following:
+
     1.	Add new Item to stock.
     2.	Find / Search for any existing item.
     3.	View all loaned items.
@@ -83,11 +96,13 @@ This section allows administrators to do the following:
 At the Navigation Bar can change Password, navigate to the MainPage, Exit and etc.
 Add item / Edit Exciting item, the manager must fill required fields and there are some optional fields as well.
 Required Fields: 
+
     1.	Title name
     2.	Item’s type (Book, Journal, Magazine and etc..)
     3.	Price
     4.	Amount of pages
     5.	Publish Date
+    
 As any selected item there are different optional fields
 Common Optional Fields: Sale, Genres.
 
@@ -98,10 +113,9 @@ Journal Optional Fields: Contributors, Editors, Frequency.
 # Manage / View Loaned Library Items:
 The manager and Employee can see what items are being loaned and who is the owner at this moment and can also press on any of them to retrieve the item to the stock.
 
+![ItemReviewsPage7](https://user-images.githubusercontent.com/23366804/180944709-fd4d3c9c-3b8a-466e-bc42-2def66cb62c0.png)
+
 As the manager only Can press at the navigation view panel and open the Users info so he can Delete User’s account or retrieve all items to stock.
 As the administrator while searching any item the options Delete and Update are being enabled for any kind of item.
 The Employee also has access to the loaned Items page but doesn’t have permission to access the user list and delete accounts.
 For example selecting an item immediately pops up these buttons and can be pressed and seen by the manager and employee.
-
-
-
