@@ -92,7 +92,6 @@
                   SelectionChanged="ResultLV_SelectionChanged" Margin="15" ItemsSource="{x:Bind _resultItems}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="x1:LibraryItem">
-
                     <StackPanel Orientation="Horizontal" Margin="6">
                         <SymbolIcon Symbol="Page" Margin="0,0,12,0"/>
                         <StackPanel Orientation="Vertical">

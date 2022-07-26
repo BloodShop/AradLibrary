@@ -43,6 +43,6 @@
             HouseEntry = houseEntry;
             PostalCode = zip;
         }
-        public override string ToString() => $"[{City}, st. {Street} {HouseNumber} / {HouseEntry} ,  Zip: {PostalCode:D5}]";
+        public override string ToString() => $"[{City} , st. {Street} {HouseNumber} / {HouseEntry} , Zip: {PostalCode:D5}]";
     }
 }

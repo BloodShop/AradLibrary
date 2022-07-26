@@ -10,10 +10,6 @@ namespace Library.DAL.SortBy
     internal class CompareItemByPriceBackwards : IComparer<LibraryItem>
     {
         public int Compare(LibraryItem x, LibraryItem y) => y.Price.CompareTo(x.Price);
-
-        public override string ToString()
-        {
-            return "Price high - low";
-        }
+        public override string ToString() => "Price high - low";
     }
 }

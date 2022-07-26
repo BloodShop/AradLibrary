@@ -10,10 +10,6 @@ namespace Library.DAL.SortBy
     public class CompareItemBySale : IComparer<LibraryItem>
     {
         public int Compare(LibraryItem x, LibraryItem y) => x.Sale.CompareTo(y.Sale);
-
-        public override string ToString()
-        {
-            return "Sale%";
-        }
+        public override string ToString() => "Sale%";
     }
 }

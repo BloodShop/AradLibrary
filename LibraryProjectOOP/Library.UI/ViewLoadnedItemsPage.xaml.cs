@@ -13,8 +13,7 @@ using Windows.UI.Xaml.Input;
 namespace Library.UI
 {
     /// <summary>
-    /// ViewLoadnedItemsPage allow the admin see who loaned an item
-    /// and Retrieve the item to the stock
+    /// ViewLoadnedItemsPage allow the worker see who loaned an item and Retrieve the item to the stock
     /// </summary>
     public sealed partial class ViewLoadnedItemsPage : Page
     {
@@ -27,19 +26,23 @@ namespace Library.UI
         /// Our Repository which we are looking at as IHumanable <see cref="IHumanable{T}"/>
         /// </summary>
         IHumanable<Person> _people;
+        /// <summary>
+        /// Get loaned items of all time
+        /// </summary>
+        Dictionary<LibraryItem, Person> _dicLoaned;
 
         // Ctor
         public ViewLoadnedItemsPage()
         {
             this.InitializeComponent();
             PaneNV.Header = LogInPage.WebSurfer.Name;
-            lv.ItemsSource = _repo.GetLoaned();
+            _dicLoaned = _repo.GetLoaned();
             _people = (IHumanable<Person>)_repo;
         }
-       
+
         async void ListViewLoanedItems_SelectionChanged(object sender, SelectionChangedEventArgs e) // As manager or Employee - can retrieve an item to stock
         {
-            LibraryItem temp = _repo.RetrieveItem(lv.SelectedIndex);
+            LibraryItem temp = _repo.RetrieveItem(ListViewLoanedItems.SelectedIndex);
             await new MessageDialog($"{temp.Title} is back in stock!").ShowAsync();
             Frame.Navigate(typeof(ViewLoadnedItemsPage));
         }

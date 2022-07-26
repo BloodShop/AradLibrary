@@ -122,6 +122,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MyDataTemplateSelector.cs" />
     <Compile Include="CreateNewItemPage.xaml.cs">
       <DependentUpon>CreateNewItemPage.xaml</DependentUpon>
     </Compile>
@@ -161,7 +162,6 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\5ac1296b709f4427d4c7785a322d78a2.targetsize-256.png" />
     <Content Include="Assets\Images\5ac1296b709f4427d4c7785a322d78a2.png" />
     <Content Include="Assets\Images\Covers\AmazingSwimCoach.png" />
     <Content Include="Assets\Images\Covers\ClassicCottages.png" />

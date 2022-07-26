@@ -4,13 +4,47 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Library.UI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:x1="using:Library.Model" xmlns:x11="using:People.Model"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:x1="using:Library.Model" 
+    xmlns:x11="using:People.Model"
+    xmlns:x2="using:Library.DAL"
     mc:Ignorable="d">
     <Page.Background>
         <ImageBrush ImageSource="/Assets/Images/5ac1296b709f4427d4c7785a322d78a2.png"/>
     </Page.Background>
     <Page.Resources>
+        <DataTemplate x:DataType="x1:LibraryItem" x:Key="LibraryItemDataTemplate">
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <SymbolIcon Symbol="Page" Margin="0,0,12,0"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding Title}" FontWeight="Bold" FontFamily="Ubuntu"/>
+                    <!--<StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="5,0,0,0" Text="{Binding PublicationDate, Converter={StaticResource StringFormatterValueConverter}, ConverterParameter= | Date - \{0:d\}}" FontFamily="Book Antiqua"/>
+                    </StackPanel>-->
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:DataType="x11:Person" x:Key="PersonDataTemplate">
+            <StackPanel Orientation="Horizontal" Margin="6">
+                <SymbolIcon Symbol="Page" Margin="0,0,12,0"/>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding Name}" FontWeight="Bold" FontFamily="Ubuntu"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="LoanedItemsTemplate">
+            <StackPanel Orientation="Horizontal">
+                <SymbolIcon Symbol="Page" Margin="5,0,0,0"/>
+                <TextBlock Text="{Binding Key}" Margin="5,0,0,0"/>
+                <SymbolIcon Symbol="People" Margin="15,0,0,0"/>
+                <TextBlock Text="{Binding Value, Mode=TwoWay}" Margin="5,0,0,0"/>
+            </StackPanel>
+        </DataTemplate>
         <local:StringFormatter x:Key="StringFormatterValueConverter"/>
+        <local:MyDataTemplateSelector x:Key="MyDataTemplateSelector"
+        LibraryItemTemplate="{StaticResource LibraryItemDataTemplate}"
+        PersonTemplate="{StaticResource PersonDataTemplate}">
+        </local:MyDataTemplateSelector>
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -33,7 +67,6 @@
             <ComboBox x:Name="PeopleCB" Grid.Column="2" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20"
                   MinWidth="150" PlaceholderText="All People" FontFamily="Book Antique" Visibility="Visible" SelectionChanged="People_SelectionChanged"/>
             <StackPanel x:Name="PeopleButtonsSP" Visibility="Collapsed">
-
                 <Button x:Name="RetrieveAllBtn" Grid.Row="0" Grid.Column="2" Visibility="Visible" Margin="10"
                           Content="Retrieve all" FontSize="20" FontFamily="Algerian" Click="RetrieveAllBtn_Click" 
                            HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
@@ -45,20 +78,20 @@
 
         <StackPanel x:Name="LoanedItemsLV" Orientation="Vertical" Padding="20" 
                     Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="3">
-            <ListView x:Name="lv" IsItemClickEnabled="True" IsMultiSelectCheckBoxEnabled="False" SelectionChanged="ListViewLoanedItems_SelectionChanged">
-                <!--ItemsSource="{x:Bind _repo.GetLoaned()}"-->
-                <!--<ListView.ItemTemplate>
+            <ListView x:Name="ListViewLoanedItems" IsMultiSelectCheckBoxEnabled="False"
+                      SelectionChanged="ListViewLoanedItems_SelectionChanged"
+                      ItemsSource="{x:Bind _dicLoaned}" IsItemClickEnabled="True">
+                <ListView.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Margin="6">
-                            <SymbolIcon Symbol="Page" Margin="0,10,0,0"/>
-                            <StackPanel Orientation="Vertical" >
-                                <TextBlock Text="{Binding }" FontWeight="Bold" FontFamily="Ubuntu"/>
-                            </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <SymbolIcon Symbol="Library" Margin="5,0,0,0"/>
+                            <TextBlock Text="{Binding Key, Converter={StaticResource StringFormatterValueConverter}, ConverterParameter=\{0:s\}}" Margin="7,0,0,0"/>
+                            <SymbolIcon Symbol="WebCam" Margin="15,0,0,0"/>
+                            <TextBlock Text="{Binding Value, Converter={StaticResource StringFormatterValueConverter}, ConverterParameter=\{0:n\}}" Margin="7,0,0,0"/>
                         </StackPanel>
                     </DataTemplate>
-                </ListView.ItemTemplate>-->
+                </ListView.ItemTemplate>
             </ListView>
-
         </StackPanel>
 
         <NavigationView x:Name="PaneNV" PaneDisplayMode="LeftMinimal" Grid.Column="0" Grid.RowSpan="100" IsPaneOpen="False"

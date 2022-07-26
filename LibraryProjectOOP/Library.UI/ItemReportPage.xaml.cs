@@ -37,7 +37,7 @@ namespace Library.UI
             PublishDateTB.Text = $"Publish Date: \t{_selectedItem.PublicationDate:D}";
             PaneNV.Header = LogInPage.WebSurfer.Name;
         }
-        void PurchaseBtn_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(PurchaseItemPage), _selectedItem);
+        void PaymentBtn_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(PurchaseItemPage), _selectedItem);
         void GuidCheckBox_Unchecked(object sender, RoutedEventArgs e) => GuidTB.Text = "Guid: ";
         void GuidCheckBox_Checked(object sender, RoutedEventArgs e) => GuidTB.Text += _selectedItem.Id;
         void ShowMoreDetailsBtn_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(ShowMoreDetailsPage), _selectedItem);

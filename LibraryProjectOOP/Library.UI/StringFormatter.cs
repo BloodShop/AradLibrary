@@ -4,8 +4,7 @@ namespace Library.UI
 {
     internal class StringFormatter : Windows.UI.Xaml.Data.IValueConverter
     {
-        // This converts the value object to the string to display.
-        // This will work with most simple types.
+        // This converts the value object to the string to display. This will work with most simple types.
         public object Convert(object value, Type targetType,
             object parameter, string language)
         {
@@ -14,8 +13,7 @@ namespace Library.UI
             if (!string.IsNullOrEmpty(formatString))
                 return string.Format(formatString, value);
             
-            // If the format string is null or empty, simply
-            // call ToString() on the value.
+            // If the format string is null or empty, simply call ToString() on the value.
             return value.ToString();
         }
         // No need to implement converting back on a one-way binding
