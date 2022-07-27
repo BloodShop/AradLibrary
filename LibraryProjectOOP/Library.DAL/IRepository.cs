@@ -6,7 +6,7 @@ namespace Library.DAL
 {
     public interface IRepository<T> where T : class
     {
-        T Add(T item, bool addAction = true);
+        T Add(T item);
         IQueryable<T> GetAvailable();
         T Get(Guid id);
         T Update(T old, T @new);

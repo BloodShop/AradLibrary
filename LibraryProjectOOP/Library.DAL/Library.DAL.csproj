@@ -134,6 +134,7 @@
     <Compile Include="LibraryRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SortBy\CompareItemByTitleBackwards.cs" />
+    <Compile Include="PeopleRepository.cs" />
     <EmbeddedResource Include="Properties\Library.DAL.rd.xml" />
   </ItemGroup>
   <ItemGroup>

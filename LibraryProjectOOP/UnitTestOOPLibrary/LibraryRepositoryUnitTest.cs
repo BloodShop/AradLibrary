@@ -54,7 +54,7 @@ namespace UnitTestOOPLibrary
             Assert.ThrowsException<SearchException>(() => repo.RetrieveItem(book1));
             Assert.ThrowsException<SearchException>(() => repo.RetrieveItem(@null));
         }
-        [TestMethod] public void AddNullItemExceptionCatch() => Assert.ThrowsException<NullReferenceException>(() => repo.Add(null));
+        [TestMethod] public void AddNullItemExceptionCatch() => Assert.ThrowsException<NullReferenceException>(() => repo.Add((LibraryItem)null));
         [TestMethod] public void VaildInputRetrieveItem()
         {
             var item = repo.GetAvailable().ToList()[0];

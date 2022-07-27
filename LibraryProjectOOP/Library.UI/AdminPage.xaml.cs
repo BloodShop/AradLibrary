@@ -17,7 +17,7 @@ namespace Library.UI
         /// <summary>
         /// Our Repository which we are looking at IHumanable <see cref="IHumanable{T}"/>
         /// </summary>
-        IHumanable<Person> _repo = new LibraryRepository();
+        IHumanable<Person> _repo = new PeopleRepository();
 
         // Ctor
         public AdminPage()

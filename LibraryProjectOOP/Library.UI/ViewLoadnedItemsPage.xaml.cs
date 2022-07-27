@@ -19,13 +19,13 @@ namespace Library.UI
     {
         // Fields
         /// <summary>
-        /// Our Repository which we are looking at as ILoanable <see cref="ILoanable{T}"/>
+        /// Our library Repository which we are looking at as ILoanable <see cref="ILoanable{T}"/>
         /// </summary>
-        ILoanable<LibraryItem> _repo = new LibraryRepository();
+        ILoanable<LibraryItem> _repoLibrary = new LibraryRepository();
         /// <summary>
-        /// Our Repository which we are looking at as IHumanable <see cref="IHumanable{T}"/>
+        /// Our users Repository which we are looking at as IHumanable <see cref="IHumanable{T}"/>
         /// </summary>
-        IHumanable<Person> _people;
+        IHumanable<Person> _repoPeople = new PeopleRepository();
         /// <summary>
         /// Get loaned items of all time
         /// </summary>
@@ -36,13 +36,12 @@ namespace Library.UI
         {
             this.InitializeComponent();
             PaneNV.Header = LogInPage.WebSurfer.Name;
-            _dicLoaned = _repo.GetLoaned();
-            _people = (IHumanable<Person>)_repo;
+            _dicLoaned = _repoLibrary.GetLoaned();
         }
 
         async void ListViewLoanedItems_SelectionChanged(object sender, SelectionChangedEventArgs e) // As manager or Employee - can retrieve an item to stock
         {
-            LibraryItem temp = _repo.RetrieveItem(ListViewLoanedItems.SelectedIndex);
+            LibraryItem temp = _repoLibrary.RetrieveItem(ListViewLoanedItems.SelectedIndex);
             await new MessageDialog($"{temp.Title} is back in stock!").ShowAsync();
             Frame.Navigate(typeof(ViewLoadnedItemsPage));
         }
@@ -51,7 +50,7 @@ namespace Library.UI
             if(LogInPage.WebSurfer is Manager)
             {
                 PeopleSP.Visibility = Visibility.Visible;
-                PeopleCB.ItemsSource = _people.GetPeople();
+                PeopleCB.ItemsSource = _repoPeople.Get();
             }
         }
         async void DeleteBtn_Click(object sender, RoutedEventArgs e) // Deletes the account and also retrieve the items the person has on loan
@@ -59,8 +58,8 @@ namespace Library.UI
             IUICommand resultDialog = await VerifyDelete();
             if (resultDialog.Label == "Yes")
             {
-                List<Person> availablePeople = _people.GetPeople().ToList();
-                var person = _people.RemovePerson(availablePeople[PeopleCB.SelectedIndex]);
+                List<Person> availablePeople = _repoPeople.Get().ToList();
+                var person = _repoPeople.Delete(availablePeople[PeopleCB.SelectedIndex]);
                 await RetrieveItems(person);
                 if (person == LogInPage.WebSurfer)
                     Frame.Navigate(typeof(LogInPage));
@@ -69,7 +68,7 @@ namespace Library.UI
         }
         async void RetrieveAllBtn_Click(object sender, RoutedEventArgs e) // Retrieve all items from the selected person
         {
-            List<Person> availablePeople = _people.GetPeople().ToList();
+            List<Person> availablePeople = _repoPeople.Get().ToList();
             var person = availablePeople[PeopleCB.SelectedIndex];
             await RetrieveItems(person);
         }
@@ -85,7 +84,7 @@ namespace Library.UI
             if (person.LoanedItems.Count > 0)
                 foreach (var item in person.LoanedItems.Keys)
                 {
-                    _repo.RetrieveItem(item);
+                    _repoLibrary.RetrieveItem(item);
                     await new MessageDialog($"{item} was added back to stock").ShowAsync();
                 }
             Frame.Navigate(typeof(ViewLoadnedItemsPage));

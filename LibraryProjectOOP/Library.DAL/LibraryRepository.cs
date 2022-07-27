@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace Library.DAL
 {
-    public class LibraryRepository : IRepository<LibraryItem>, ILoanable<LibraryItem>, IHumanable<Person>, IEnumerable
+    public class LibraryRepository : IRepository<LibraryItem>, ILoanable<LibraryItem>, IEnumerable
     {
         // Singleton DataBase creation
         readonly DataBase _context = DataBase.Instance;
@@ -71,6 +71,16 @@ namespace Library.DAL
         /// </summary>
         /// <param name="type">Type you are searching for</param>
         /// <returns>Retrun a list of all the items that are by the given type</returns>
+        public static void Swap(ref LibraryItem old, LibraryItem @new) // static function to swap between items 
+        {
+            if (@new != null)
+            {
+                @new.Reviews.AddRange(old.Reviews); // save reviews
+                old = @new;
+                Manager.EndSaleEventHandler += old.OnEndSale;
+                Manager.SetSaleEventHandler += old.OnSetSale;
+            }
+        }
         public List<LibraryItem> FindAllByType(Type type)
         {
             // Switch cannot use typeof parameter
@@ -83,28 +93,15 @@ namespace Library.DAL
             return _context.LibraryItems;
         }
 
-        //IRepository
-        public static void Swap(ref LibraryItem old, LibraryItem @new) // static function to swap between items 
-        {
-            if (@new != null)
-            {
-                @new.Reviews.AddRange(old.Reviews); // save reviews
-                old = @new;
-                Manager.EndSaleEventHandler += old.OnEndSale;
-                Manager.SetSaleEventHandler += old.OnSetSale;
-            }
-        }
+        #region IRepository
         public LibraryItem Get(Guid id) => _context.LibraryItems.FirstOrDefault(i => i.Id == id);
-        public LibraryItem Add(LibraryItem item, bool addAction = true)
+        public LibraryItem Add(LibraryItem item)
         {
             if (item == null)
                 throw new NullReferenceException("Null input isn't valid");
 
-            if (addAction)
-            {
-                Manager.SetSaleEventHandler += item.OnSetSale;
-                Manager.EndSaleEventHandler += item.OnEndSale;
-            }
+            Manager.SetSaleEventHandler += item.OnSetSale;
+            Manager.EndSaleEventHandler += item.OnEndSale;
             _context.LibraryItems.Add(item);
             return item;
         }
@@ -138,28 +135,29 @@ namespace Library.DAL
             return @new;
         }
         public IQueryable<LibraryItem> GetAvailable() => _context.LibraryItems.AsQueryable();
+        #endregion
 
-        // ILoanable
+        #region ILoanable
         public Dictionary<LibraryItem, Person> GetLoaned() => _context.LoanedLibraryItems;
-        public LibraryItem RetrieveItem(LibraryItem item)
-        {
-            if (item == null || !_context.LoanedLibraryItems.ContainsKey(item))
-                throw new SearchException($"No loadned item named: {item}");
-            LibraryItem temp = this.Add(_context.LoanedLibraryItems.FirstOrDefault(x => x.Key == item).Key, false);
-            _context.LoanedLibraryItems.Remove(temp);
-            return temp;
-        }
         public LibraryItem RetrieveItem(int index)
         {
             if (index > _context.LoanedLibraryItems.Count || index < 0)
                 throw new IndexOutOfRangeException();
 
-            LibraryItem temp = Add(_context.LoanedLibraryItems.ElementAt(index).Key, false);
+            LibraryItem temp = Add(_context.LoanedLibraryItems.ElementAt(index).Key);
             Person p = _context.LoanedLibraryItems.ElementAt(index).Value;
             p.RemoveItem(temp);
             _context.LoanedLibraryItems.Remove(temp);
             return temp;
-        }
+        } // Retrieve the Item by Index input
+        public LibraryItem RetrieveItem(LibraryItem item)
+        {
+            if (item == null || !_context.LoanedLibraryItems.ContainsKey(item))
+                throw new SearchException($"No loadned item named: {item}");
+            LibraryItem temp = this.Add(_context.LoanedLibraryItems.FirstOrDefault(x => x.Key == item).Key);
+            _context.LoanedLibraryItems.Remove(temp);
+            return temp;
+        } // Retrieve the Item by Item input
         public LibraryItem RetrieveItem(Person person)
         {
             var element = _context.LoanedLibraryItems.FirstOrDefault(x => x.Value == person).Key;
@@ -169,7 +167,7 @@ namespace Library.DAL
                 return element;
             }
             return null;
-        }
+        } // Retrieve the Item by Person input
         public LibraryItem AddLoan(LibraryItem item, Person owner, DateTime itemReturnDate)
         {
             if (itemReturnDate < DateTime.Now) itemReturnDate = DateTime.Now.AddDays(1);
@@ -177,29 +175,9 @@ namespace Library.DAL
             owner.AddNewItem(item, itemReturnDate);
             return Delete(item);
         }
+        #endregion
 
-        // IHumanable
-        public void SetSale() => Manager.OnSetSale();
-        public void EndSale() => Manager.OnEndSale();
-        public void AddPerson(Person person)
-        {
-            if (person == null) return;
-            _context.People.Add(person);
-        }
-        public Person RemovePerson(Person person)
-        {
-            var removePerson = _context.People.FirstOrDefault(i => i == person);
-            if (removePerson != null)
-            {
-                _context.People.Remove(removePerson);
-                return removePerson;
-            }
-            return null;
-        }
-        public IQueryable<Person> GetPeople() => _context.People.AsQueryable();
-
-        // IEnumerator
-        public IEnumerator GetEnumerator()
+        public IEnumerator GetEnumerator() // IEnumerator
         {
             //return new LibraryItemEnum(_context.LibraryItems);
 

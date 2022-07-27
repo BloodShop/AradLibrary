@@ -4,9 +4,9 @@ namespace Library.DAL
 {
     public interface IHumanable<T> where T : class
     {
-        IQueryable<T> GetPeople();
-        void AddPerson(T person);
-        T RemovePerson(T person);
+        IQueryable<T> Get();
+        T Add(T person);
+        T Delete(T person);
         void EndSale();
         void SetSale();
     }

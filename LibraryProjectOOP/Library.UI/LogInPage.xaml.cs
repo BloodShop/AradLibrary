@@ -32,11 +32,13 @@ namespace Library.UI
         /// </summary>
         IRepository<LibraryItem> _repo = new LibraryRepository();
 
+        IHumanable<Person> _repoPeople = new PeopleRepository();
+
         // Ctor
         public LogInPage()
         {
             this.InitializeComponent();
-            _people = ((IHumanable<Person>)_repo).GetPeople().ToList();
+            _people = _repoPeople.Get().ToList();
         }
         void GuestTB_Click(object sender, RoutedEventArgs e) // Selected Guest
         {

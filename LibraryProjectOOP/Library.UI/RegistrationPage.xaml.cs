@@ -15,7 +15,7 @@ namespace Library.UI
         /// <summary>
         ///  Our Repository which we are looking at as IHumanable <see cref="IHumanable{T}"/>
         /// </summary>
-        IHumanable<Person> _repo = new LibraryRepository();
+        IHumanable<Person> _repo = new PeopleRepository();
 
         // Ctor
         public RegistrationPage() => this.InitializeComponent();
@@ -31,7 +31,7 @@ namespace Library.UI
             if(RegistrationCondition(out int houseNum, out char houseEntry, out int zip))
             {
                 Address address = new Address(CityTB1.Text, StreetTB1.Text, houseNum, houseEntry, zip);
-                _repo.AddPerson(new Customer(NameTB1.Text, PasswordTB1.Password, address));
+                _repo.Add(new Customer(NameTB1.Text, PasswordTB1.Password, address));
                 await new MessageDialog("Customer was added successfully!").ShowAsync();
                 Frame.Navigate(typeof(LogInPage));
             }
