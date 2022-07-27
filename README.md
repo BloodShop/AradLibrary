@@ -2,31 +2,42 @@
 Our application is a simple way to view what kind of Library Items we have in our stock and make a quick orders. Everyone can access this application without any commitment you can browse the application as a guest without logging in, or you could just simply register as a customer and you will remain our lovely user. 
 
 # Main Purposes of Arad City Library Application:
-1.	Modify any new Item into stock as administrator.
-2.	Search and Explore certain Library Items.
-3.	Purchase or Borrow and kind of Items you like.
-4.	Easy using as possible for the customer and the administrator.
-5.	Make things clarify and manage easily.
+Purpuses: 
+
+	1.	Modify any new Item into stock as administrator.
+	2.	Search and Explore certain Library Items.
+	3.	Purchase or Borrow and kind of Items you like.
+	4.	Easy using as possible for the customer and the administrator.
+	5.	Make things clarify and manage easily.
 
 -	Arad City Library made for windows Application users
 
 ![WelcomeApp](https://user-images.githubusercontent.com/23366804/180944263-9057c0fe-8beb-40ae-b6ce-c59f022acf44.png)
 
 Architecture and technological requirements
-1. Infrastructures
-	a. DataBase Architecture
-		I. DataMock
-		II. JsonTextFile
-	b. Web Application Client Side Platform
-		I. UWP C#
-2. Internationalization
-	a. Languages
-		I. English
-		II. Hebrew
-3. Unit Tests
-	a. Person.Model
-	b. Library.Model
-	c. Library.DAL
+1. Infrastructures:
+
+a. DataBase Architecture:
+
+	I.	DataMock
+	II.	JsonTextFile
+
+b. Web Application Client Side Platform:
+	
+	I.	UWP C#
+
+2. Internationalization:
+
+a. Languages:
+
+	I.	English
+	II.	Hebrew
+		
+b. Unit Tests:
+
+	I.	Person.Model
+	II.	Library.Model
+	III.	Library.DAL
 	
 ![LogInPage2](https://user-images.githubusercontent.com/23366804/180944348-12e83dba-80ca-4e35-82fb-08338b029003.png)
 
@@ -46,18 +57,20 @@ At the final stage the user is able to purchase / borrow any kind of item he wil
  ![SearchItemPage3](https://user-images.githubusercontent.com/23366804/180944393-ff4b2eae-4f91-4fcf-ad34-dd83eeeffde6.png)
 
 As any user the is an Navigation Panel which can be accessed at any page to navigate to certain pages or changes like: 
-1.	Returning to the MainPage
-2.	Changing Password
-3.	Exiting the application
-4.	Registration
+
+	1.	Returning to the MainPage
+	2.	Changing Password
+	3.	Exiting the application
+	4.	Registration
 
 # Management panel
 The management panel will be used by both the management members and the users of the application and therefore it will contain within it
 A permission-managed information mechanism, that is, information that is displayed or can be edited only by those with suitable permission.
 The management panel will be based on the template attached at the beginning of this document (on the architecture page).
 
-# Permissions –
-A.	Manager - There is access to all the information in the system:
+# Permissions
+
+A. Manager - There is access to all the information in the system:
 
     1.	Adding new items to stock.
     2.	Delete / Update any item.
@@ -65,19 +78,23 @@ A.	Manager - There is access to all the information in the system:
     4.	Return any item to stock that was loaned.
     5.	Search / Delete users
     
-B.	Employee:
+B. Employee:
+
     1.	Get certain information for the delivery.
     2.	Adding new items to stock.
     3.	Return any item to stock that was loaned.
     
-C.	Customer:
+C. Customer:
+
     1.	Search any Item and purchase / borrow
     2.	React / Review to any item
     3.	Change password
-D.	Guest:
-    1.Search any Item and purchase only
-    2. React / Review to any item
-    3. Doesn’t have sale on any item
+    
+D. Guest:
+
+    1.	Search any Item and purchase only
+    2.	React / Review to any item
+    3.	Doesn’t have sale on any item
     
 ![ItemMoreInformationPage6](https://user-images.githubusercontent.com/23366804/180944583-ca8f8a0b-cb64-4066-9fe3-fe43bc852e8c.png)
 
